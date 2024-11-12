@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -20,24 +21,40 @@ QT_BEGIN_NAMESPACE
 class Ui_Apresentacao
 {
 public:
+    QLabel *label;
+    QPushButton *btnFechar;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout;
     QPushButton *btnLogin;
     QPushButton *btnRegister;
-    QLabel *label;
 
     void setupUi(QWidget *Apresentacao)
     {
         if (Apresentacao->objectName().isEmpty())
             Apresentacao->setObjectName(QString::fromUtf8("Apresentacao"));
         Apresentacao->resize(490, 266);
-        btnLogin = new QPushButton(Apresentacao);
-        btnLogin->setObjectName(QString::fromUtf8("btnLogin"));
-        btnLogin->setGeometry(QRect(210, 150, 89, 25));
-        btnRegister = new QPushButton(Apresentacao);
-        btnRegister->setObjectName(QString::fromUtf8("btnRegister"));
-        btnRegister->setGeometry(QRect(210, 190, 89, 25));
         label = new QLabel(Apresentacao);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(220, 50, 71, 17));
+        btnFechar = new QPushButton(Apresentacao);
+        btnFechar->setObjectName(QString::fromUtf8("btnFechar"));
+        btnFechar->setGeometry(QRect(380, 220, 89, 25));
+        widget = new QWidget(Apresentacao);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(210, 140, 82, 91));
+        verticalLayout = new QVBoxLayout(widget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        btnLogin = new QPushButton(widget);
+        btnLogin->setObjectName(QString::fromUtf8("btnLogin"));
+
+        verticalLayout->addWidget(btnLogin);
+
+        btnRegister = new QPushButton(widget);
+        btnRegister->setObjectName(QString::fromUtf8("btnRegister"));
+
+        verticalLayout->addWidget(btnRegister);
+
 
         retranslateUi(Apresentacao);
 
@@ -47,9 +64,10 @@ public:
     void retranslateUi(QWidget *Apresentacao)
     {
         Apresentacao->setWindowTitle(QApplication::translate("Apresentacao", "ERP Santander! Agora de um jeito mais f\303\241cil", nullptr));
+        label->setText(QApplication::translate("Apresentacao", "Santander", nullptr));
+        btnFechar->setText(QApplication::translate("Apresentacao", "Fechar", nullptr));
         btnLogin->setText(QApplication::translate("Apresentacao", "Login", nullptr));
         btnRegister->setText(QApplication::translate("Apresentacao", "Register", nullptr));
-        label->setText(QApplication::translate("Apresentacao", "Santander", nullptr));
     } // retranslateUi
 
 };

@@ -20,6 +20,8 @@ private slots:
 
     void on_btnRegister_clicked();
 
+    void on_btnFechar_clicked();
+
 private:
     Ui::Apresentacao *ui;
 };

@@ -5,12 +5,21 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include "apresentacao.h"
+#include "dashboard.h"
+#include <QSqlError>
+#include <QApplication>
+#include <QDesktopWidget>
+#include <QCryptographicHash>
 
 Login::Login(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Login)
 {
     ui->setupUi(this);
+    QRect screenGeometry = QApplication::desktop()->screenGeometry();
+    int x = (screenGeometry.width() - this->width()) / 2;
+    int y = (screenGeometry.height() - this->height()) / 2;
+    this->move(x, y);
 }
 
 Login::~Login()
@@ -20,94 +29,63 @@ Login::~Login()
 
 void Login::on_btnCancelar_clicked()
 {
-
+    Apresentacao *a= new Apresentacao();
+    a->show();
+    this->close();
 }
 
 void Login::on_btnLimparTudo_clicked()
 {
     ui->edtCPF->clear();
-    ui->edtSenha->clear();
+    ui->edtPassword->clear();
     ui->edtCPF->setFocus();
 }
 
+
+
+QString generateHash(const QString &input) {
+    QByteArray byteArray = QCryptographicHash::hash(input.toUtf8(), QCryptographicHash::Sha256);
+    return QString(byteArray.toHex());
+}
+
+
+
+
+
 void Login::on_btnEntrar_clicked()
 {
-
-    QString nome = ui->edtNome->text();
     QString CPF = ui->edtCPF->text();
-    QString senha = ui->edtPassword->text();
-
-    QString typeUser = "";
-    int n=0;
-    int erro=-1;
+    QString password = ui->edtPassword->text();
     QSqlQuery query;
 
-    if(nome || CPF || senha){
-        erro=0;
-    } else if(nome==false || CPF==false || senha==false){
-        erro=1;
+    if (CPF.isEmpty() || password.isEmpty()) {
         QMessageBox::warning(this, "Aviso", "Tenha certeza que inseriu todas as informações!");
     } else {
-        QMessageBox::warning(this, "Aviso", "Algo deu errado!");
-        erro=1;
-    }
+        try {
+            QString hashedPassword = generateHash(password);
+            query.prepare("SELECT * FROM Clientes WHERE CPF=:'VARcpf' AND password=:'VARpassword'");
+            query.bindValue(":VARcpf", CPF);
+            query.bindValue(":VARpassword", hashedPassword);
 
-    if(erro==false){
-        QString parametro = "";
-        QString parametro2 = "";
-    switch(n){
-        case 0:
-            typeUser="Clientes";
-            parametro="nome, CPF, email, senha";
-            parametro2="'"+nome+"', '"+CPF+"', '"+senha+"'";
-        break;
-    }
-
-    if(query.exec("INSERT INTO "+typeUser+" ("+parametro+") VALUES ("+parametro2+")"));
-    QMessageBox::warning(this, "Aviso", "O registro de "+nome+" foi realizado com sucesso!");
-
-    this->close();
-    Login *l= new Login();
-    l->show();
-
-
-
-
-
-
-    QString CPF = ui->edtCPF->text();
-    QString senha = ui->edtPassword->text();
-
-    QString typeUser = "";
-    int n=-1;
-    int erro=0;
-
-    if(erro==false){
-        QString parametro = "";
-        QString parametro2 = "";
-    switch(n){
-        case 0:
-            typeUser="Clientes";
-            parametro="nome, CPF, senha";
-            parametro2="'"+nome+"', '"+CPF+"', '"+senha+"'";
-        break;
-    }
-
-    QSqlQuery query;
-    if(query.exec("SELECT * FROM "+typeUser+" WHERE nome='"+input+"' AND senha='"+senha+"'"));
-        int cont=0;
-        while(query.next()){
-            cont++;
-        }
-        if(cont>0){
-            lojaOpcoes *entrarmenu= new lojaOpcoes(admin);
-            entrarmenu->show();
-            this->close();
-        }else{
-            ui->txtInput->clear();
-            ui->txtSenha->clear();
-            ui->txtInput->setFocus();
-            QMessageBox::warning(this, "Aviso", "Senha ou usuario incorreto!");
+            if (query.exec()) {
+                if (query.next()) { // move o cursor para a primeira linha do resultado
+                    QString id = query.value("id").toString(); // QVariant.toString();
+                    Dashboard *d = new Dashboard(id);
+                    d->show();
+                    this->close();
+                } else {
+                    ui->edtCPF->clear();
+                    ui->edtPassword->clear();
+                    ui->edtCPF->setFocus();
+                    QMessageBox::warning(this, "Aviso", "Senha ou CPF incorreto!");
+                }
+            } else {
+                qDebug() << "Erro ao executar a consulta de clientes:" << query.lastError().text();
+                QMessageBox::warning(this, "Erro!", "Um erro desconhecido aconteceu!");
+            }
+        } catch (...) {
+            QMessageBox::warning(this, "Erro!", "Erro desconhecido!");
         }
     }
 }
+

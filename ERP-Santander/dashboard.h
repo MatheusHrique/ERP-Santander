@@ -12,11 +12,13 @@ class Dashboard : public QWidget
     Q_OBJECT
 
 public:
-    explicit Dashboard(QWidget *parent = nullptr);
+    explicit Dashboard(QString id, QWidget *parent = nullptr);
     ~Dashboard();
 
 private slots:
     void on_btnLogout_clicked();
+
+    void on_btnCheckConta_clicked();
 
 private:
     Ui::Dashboard *ui;
