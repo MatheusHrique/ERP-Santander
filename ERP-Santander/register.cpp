@@ -41,6 +41,11 @@ void Register::on_btnLimparTudo_clicked()
     ui->edtNome->setFocus();
 }
 
+QString Register::generateHash(const QString &input) {
+    QByteArray byteArray = QCryptographicHash::hash(input.toUtf8(), QCryptographicHash::Sha256);
+    return QString(byteArray.toHex());
+}
+
 void Register::on_btnCriarConta_clicked()
 {
     QString nome = ui->edtNome->text();
@@ -61,8 +66,17 @@ void Register::on_btnCriarConta_clicked()
     }
 
     try {
-    if(query.exec("INSERT INTO Clientes (nome, CPF, password) VALUES ('"+nome+"', '"+CPF+"', '"+password+"')"));
-    QMessageBox::warning(this, "Aviso", "O registro de "+nome+" foi realizado com sucesso!");
+        QString hashedPassword = generateHash(password);
+        query.prepare("INSERT INTO Clientes (nome, CPF, password) VALUES (:nome, :CPF, :password)");
+        query.bindValue(":nome", nome);
+        query.bindValue(":CPF", CPF);
+        query.bindValue(":password", hashedPassword);
+
+        if (!query.exec()) {
+            qDebug() << "Error inserting into table:" << query.lastError().text();
+        } else {
+            QMessageBox::warning(this, "Aviso", "O registro de "+nome+" foi realizado com sucesso!");
+        }
 
     this->close();
     Login *l= new Login();
@@ -71,4 +85,4 @@ void Register::on_btnCriarConta_clicked()
     } catch (...) {
         qDebug() << "Erro ao executar a consulta:" << query.lastError().text();
     }
-   }
+}

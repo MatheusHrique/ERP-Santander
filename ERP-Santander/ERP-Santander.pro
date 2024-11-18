@@ -18,25 +18,34 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     apresentacao.cpp \
+    contaspagarreceber.cpp \
     dashboard.cpp \
+    faturas.cpp \
     login.cpp \
     main.cpp \
     initialwindow.cpp \
-    register.cpp
+    register.cpp \
+    transacoes.cpp
 
 HEADERS += \
     apresentacao.h \
+    contaspagarreceber.h \
     dashboard.h \
+    faturas.h \
     initialwindow.h \
     login.h \
-    register.h
+    register.h \
+    transacoes.h
 
 FORMS += \
     apresentacao.ui \
+    contaspagarreceber.ui \
     dashboard.ui \
+    faturas.ui \
     initialwindow.ui \
     login.ui \
-    register.ui
+    register.ui \
+    transacoes.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

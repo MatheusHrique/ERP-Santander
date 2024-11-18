@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Register_t {
-    QByteArrayData data[5];
-    char stringdata0[83];
+    QByteArrayData data[7];
+    char stringdata0[102];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,12 +35,14 @@ QT_MOC_LITERAL(0, 0, 8), // "Register"
 QT_MOC_LITERAL(1, 9, 22), // "on_btnCancelar_clicked"
 QT_MOC_LITERAL(2, 32, 0), // ""
 QT_MOC_LITERAL(3, 33, 24), // "on_btnLimparTudo_clicked"
-QT_MOC_LITERAL(4, 58, 24) // "on_btnCriarConta_clicked"
+QT_MOC_LITERAL(4, 58, 12), // "generateHash"
+QT_MOC_LITERAL(5, 71, 5), // "input"
+QT_MOC_LITERAL(6, 77, 24) // "on_btnCriarConta_clicked"
 
     },
     "Register\0on_btnCancelar_clicked\0\0"
-    "on_btnLimparTudo_clicked\0"
-    "on_btnCriarConta_clicked"
+    "on_btnLimparTudo_clicked\0generateHash\0"
+    "input\0on_btnCriarConta_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -50,7 +52,7 @@ static const uint qt_meta_data_Register[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -58,13 +60,15 @@ static const uint qt_meta_data_Register[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   29,    2, 0x08 /* Private */,
-       3,    0,   30,    2, 0x08 /* Private */,
-       4,    0,   31,    2, 0x08 /* Private */,
+       1,    0,   34,    2, 0x08 /* Private */,
+       3,    0,   35,    2, 0x08 /* Private */,
+       4,    1,   36,    2, 0x08 /* Private */,
+       6,    0,   39,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::QString, QMetaType::QString,    5,
     QMetaType::Void,
 
        0        // eod
@@ -78,11 +82,12 @@ void Register::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         switch (_id) {
         case 0: _t->on_btnCancelar_clicked(); break;
         case 1: _t->on_btnLimparTudo_clicked(); break;
-        case 2: _t->on_btnCriarConta_clicked(); break;
+        case 2: { QString _r = _t->generateHash((*reinterpret_cast< const QString(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+        case 3: _t->on_btnCriarConta_clicked(); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject Register::staticMetaObject = { {
@@ -114,13 +119,13 @@ int Register::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 4)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }

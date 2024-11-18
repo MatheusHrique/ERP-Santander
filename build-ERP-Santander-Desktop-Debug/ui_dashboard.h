@@ -21,52 +21,56 @@ QT_BEGIN_NAMESPACE
 class Ui_Dashboard
 {
 public:
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
     QLabel *lblID;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *btnCheckConta;
     QPushButton *btnLogout;
+    QPushButton *btnContasPagarReceber;
 
     void setupUi(QWidget *Dashboard)
     {
         if (Dashboard->objectName().isEmpty())
             Dashboard->setObjectName(QString::fromUtf8("Dashboard"));
         Dashboard->resize(471, 237);
-        widget = new QWidget(Dashboard);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(20, 10, 72, 19));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(Dashboard);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(20, 10, 72, 19));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QString::fromUtf8("label"));
 
         horizontalLayout->addWidget(label);
 
-        lblID = new QLabel(widget);
+        lblID = new QLabel(layoutWidget);
         lblID->setObjectName(QString::fromUtf8("lblID"));
 
         horizontalLayout->addWidget(lblID);
 
-        widget1 = new QWidget(Dashboard);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(230, 190, 178, 27));
-        horizontalLayout_2 = new QHBoxLayout(widget1);
+        layoutWidget1 = new QWidget(Dashboard);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(230, 190, 178, 27));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        btnCheckConta = new QPushButton(widget1);
+        btnCheckConta = new QPushButton(layoutWidget1);
         btnCheckConta->setObjectName(QString::fromUtf8("btnCheckConta"));
 
         horizontalLayout_2->addWidget(btnCheckConta);
 
-        btnLogout = new QPushButton(widget1);
+        btnLogout = new QPushButton(layoutWidget1);
         btnLogout->setObjectName(QString::fromUtf8("btnLogout"));
 
         horizontalLayout_2->addWidget(btnLogout);
 
+        btnContasPagarReceber = new QPushButton(Dashboard);
+        btnContasPagarReceber->setObjectName(QString::fromUtf8("btnContasPagarReceber"));
+        btnContasPagarReceber->setGeometry(QRect(140, 100, 191, 25));
 
         retranslateUi(Dashboard);
 
@@ -80,6 +84,7 @@ public:
         lblID->setText(QString());
         btnCheckConta->setText(QApplication::translate("Dashboard", "CheckConta", nullptr));
         btnLogout->setText(QApplication::translate("Dashboard", "Logout", nullptr));
+        btnContasPagarReceber->setText(QApplication::translate("Dashboard", "Contas a Pagar e Receber", nullptr));
     } // retranslateUi
 
 };

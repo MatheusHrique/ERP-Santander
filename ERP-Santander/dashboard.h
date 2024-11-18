@@ -20,6 +20,8 @@ private slots:
 
     void on_btnCheckConta_clicked();
 
+    void on_btnContasPagarReceber_clicked();
+
 private:
     Ui::Dashboard *ui;
 };

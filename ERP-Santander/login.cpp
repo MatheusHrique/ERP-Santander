@@ -43,7 +43,7 @@ void Login::on_btnLimparTudo_clicked()
 
 
 
-QString generateHash(const QString &input) {
+QString Login::generateHash(const QString &input) {
     QByteArray byteArray = QCryptographicHash::hash(input.toUtf8(), QCryptographicHash::Sha256);
     return QString(byteArray.toHex());
 }
@@ -63,9 +63,10 @@ void Login::on_btnEntrar_clicked()
     } else {
         try {
             QString hashedPassword = generateHash(password);
-            query.prepare("SELECT * FROM Clientes WHERE CPF=:'VARcpf' AND password=:'VARpassword'");
+            query.prepare("SELECT * FROM Clientes WHERE CPF = :VARcpf AND password = :VARpassword");
             query.bindValue(":VARcpf", CPF);
             query.bindValue(":VARpassword", hashedPassword);
+            QMessageBox::warning(this, "Aviso", "Senha hashed: " + hashedPassword);
 
             if (query.exec()) {
                 if (query.next()) { // move o cursor para a primeira linha do resultado

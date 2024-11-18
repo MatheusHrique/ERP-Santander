@@ -1,0 +1,9 @@
+Área para Adicionar Faturas: Campos para inserir detalhes da fatura, como nome do fornecedor, valor, data de vencimento, etc.
+
+Lista de Faturas: Tabela ou lista que exibe as faturas existentes, com colunas para nome do fornecedor, valor, data de vencimento, status de pagamento, etc.
+
+Filtros e Busca: Campos de filtro e busca para facilitar a localização de faturas específicas.
+
+
+Histórico de Transações: Seção onde o usuário pode ver o histórico de pagamentos e recebimentos.
+

@@ -7,6 +7,7 @@
 #include <QSqlError>
 #include <QApplication>
 #include <QDesktopWidget>
+#include "contaspagarreceber.h"
 
 Dashboard::Dashboard(QString id, QWidget *parent) :
     QWidget(parent),
@@ -68,3 +69,10 @@ void Dashboard::on_btnCheckConta_clicked()
     }
 }
 
+
+void Dashboard::on_btnContasPagarReceber_clicked()
+{
+    contasPagarReceber *c = new contasPagarReceber(ui->lblID->text());
+    c->show();
+    this->close();
+}

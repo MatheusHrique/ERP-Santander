@@ -20,6 +20,8 @@ private slots:
 
     void on_btnLimparTudo_clicked();
 
+    QString generateHash(const QString &input);
+
     void on_btnEntrar_clicked();
 
 private:
