@@ -18,6 +18,8 @@ public:
 private slots:
     void on_btnVoltar_clicked();
 
+    void carregarFaturas();
+
 private:
     Ui::faturas *ui;
 };

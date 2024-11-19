@@ -10,6 +10,7 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QCryptographicHash>
+#include "bcript.h"
 
 Login::Login(QWidget *parent) :
     QWidget(parent),
@@ -41,28 +42,22 @@ void Login::on_btnLimparTudo_clicked()
     ui->edtCPF->setFocus();
 }
 
-
-
-QString Login::generateHash(const QString &input) {
-    QByteArray byteArray = QCryptographicHash::hash(input.toUtf8(), QCryptographicHash::Sha256);
-    return QString(byteArray.toHex());
-}
-
-
-
-
-
 void Login::on_btnEntrar_clicked()
 {
     QString CPF = ui->edtCPF->text();
     QString password = ui->edtPassword->text();
     QSqlQuery query;
+    bcript hashGenerator;
+
+//    if(nome.isEmpty() || CPF.isEmpty() || password.isEmpty()){
+//        QMessageBox::warning(this, "Aviso", "Tenha certeza que inseriu todas as informações!");
+//    } else if(!nome.isEmpty() && !CPF.isEmpty() && !password.isEmpty()){
 
     if (CPF.isEmpty() || password.isEmpty()) {
         QMessageBox::warning(this, "Aviso", "Tenha certeza que inseriu todas as informações!");
-    } else {
+    } else if(!CPF.isEmpty() && !password.isEmpty()){
         try {
-            QString hashedPassword = generateHash(password);
+            QString hashedPassword = hashGenerator.generateHash(password);
             query.prepare("SELECT * FROM Clientes WHERE CPF = :VARcpf AND password = :VARpassword");
             query.bindValue(":VARcpf", CPF);
             query.bindValue(":VARpassword", hashedPassword);
@@ -87,6 +82,8 @@ void Login::on_btnEntrar_clicked()
         } catch (...) {
             QMessageBox::warning(this, "Erro!", "Erro desconhecido!");
         }
+    } else {
+        QMessageBox::warning(this, "Aviso", "Algo deu errado!");
     }
 }
 

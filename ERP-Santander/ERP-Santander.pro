@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     apresentacao.cpp \
+    bcript.cpp \
     contaspagarreceber.cpp \
     dashboard.cpp \
     faturas.cpp \
@@ -29,6 +30,7 @@ SOURCES += \
 
 HEADERS += \
     apresentacao.h \
+    bcript.h \
     contaspagarreceber.h \
     dashboard.h \
     faturas.h \

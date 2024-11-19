@@ -53,6 +53,7 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../ERP-Santander/apresentacao.cpp \
+		../ERP-Santander/bcript.cpp \
 		../ERP-Santander/contaspagarreceber.cpp \
 		../ERP-Santander/dashboard.cpp \
 		../ERP-Santander/faturas.cpp \
@@ -69,6 +70,7 @@ SOURCES       = ../ERP-Santander/apresentacao.cpp \
 		moc_register.cpp \
 		moc_transacoes.cpp
 OBJECTS       = apresentacao.o \
+		bcript.o \
 		contaspagarreceber.o \
 		dashboard.o \
 		faturas.o \
@@ -163,6 +165,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../ERP-Santander/ERP-Santander.pro ../ERP-Santander/apresentacao.h \
+		../ERP-Santander/bcript.h \
 		../ERP-Santander/contaspagarreceber.h \
 		../ERP-Santander/dashboard.h \
 		../ERP-Santander/faturas.h \
@@ -170,6 +173,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../ERP-Santander/login.h \
 		../ERP-Santander/register.h \
 		../ERP-Santander/transacoes.h ../ERP-Santander/apresentacao.cpp \
+		../ERP-Santander/bcript.cpp \
 		../ERP-Santander/contaspagarreceber.cpp \
 		../ERP-Santander/dashboard.cpp \
 		../ERP-Santander/faturas.cpp \
@@ -361,8 +365,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../ERP-Santander/apresentacao.h ../ERP-Santander/contaspagarreceber.h ../ERP-Santander/dashboard.h ../ERP-Santander/faturas.h ../ERP-Santander/initialwindow.h ../ERP-Santander/login.h ../ERP-Santander/register.h ../ERP-Santander/transacoes.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../ERP-Santander/apresentacao.cpp ../ERP-Santander/contaspagarreceber.cpp ../ERP-Santander/dashboard.cpp ../ERP-Santander/faturas.cpp ../ERP-Santander/login.cpp ../ERP-Santander/main.cpp ../ERP-Santander/initialwindow.cpp ../ERP-Santander/register.cpp ../ERP-Santander/transacoes.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../ERP-Santander/apresentacao.h ../ERP-Santander/bcript.h ../ERP-Santander/contaspagarreceber.h ../ERP-Santander/dashboard.h ../ERP-Santander/faturas.h ../ERP-Santander/initialwindow.h ../ERP-Santander/login.h ../ERP-Santander/register.h ../ERP-Santander/transacoes.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../ERP-Santander/apresentacao.cpp ../ERP-Santander/bcript.cpp ../ERP-Santander/contaspagarreceber.cpp ../ERP-Santander/dashboard.cpp ../ERP-Santander/faturas.cpp ../ERP-Santander/login.cpp ../ERP-Santander/main.cpp ../ERP-Santander/initialwindow.cpp ../ERP-Santander/register.cpp ../ERP-Santander/transacoes.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../ERP-Santander/apresentacao.ui ../ERP-Santander/contaspagarreceber.ui ../ERP-Santander/dashboard.ui ../ERP-Santander/faturas.ui ../ERP-Santander/initialwindow.ui ../ERP-Santander/login.ui ../ERP-Santander/register.ui ../ERP-Santander/transacoes.ui $(DISTDIR)/
 
 
@@ -493,6 +497,9 @@ apresentacao.o: ../ERP-Santander/apresentacao.cpp ../ERP-Santander/apresentacao.
 		../ERP-Santander/register.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o apresentacao.o ../ERP-Santander/apresentacao.cpp
 
+bcript.o: ../ERP-Santander/bcript.cpp ../ERP-Santander/bcript.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bcript.o ../ERP-Santander/bcript.cpp
+
 contaspagarreceber.o: ../ERP-Santander/contaspagarreceber.cpp ../ERP-Santander/contaspagarreceber.h \
 		ui_contaspagarreceber.h \
 		../ERP-Santander/dashboard.h \
@@ -508,13 +515,14 @@ dashboard.o: ../ERP-Santander/dashboard.cpp ../ERP-Santander/dashboard.h \
 
 faturas.o: ../ERP-Santander/faturas.cpp ../ERP-Santander/faturas.h \
 		ui_faturas.h \
-		../ERP-Santander/dashboard.h
+		../ERP-Santander/contaspagarreceber.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o faturas.o ../ERP-Santander/faturas.cpp
 
 login.o: ../ERP-Santander/login.cpp ../ERP-Santander/login.h \
 		ui_login.h \
 		../ERP-Santander/apresentacao.h \
-		../ERP-Santander/dashboard.h
+		../ERP-Santander/dashboard.h \
+		../ERP-Santander/bcript.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o login.o ../ERP-Santander/login.cpp
 
 main.o: ../ERP-Santander/main.cpp ../ERP-Santander/initialwindow.h
@@ -528,12 +536,13 @@ initialwindow.o: ../ERP-Santander/initialwindow.cpp ../ERP-Santander/initialwind
 register.o: ../ERP-Santander/register.cpp ../ERP-Santander/register.h \
 		ui_register.h \
 		../ERP-Santander/apresentacao.h \
-		../ERP-Santander/login.h
+		../ERP-Santander/login.h \
+		../ERP-Santander/bcript.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o register.o ../ERP-Santander/register.cpp
 
 transacoes.o: ../ERP-Santander/transacoes.cpp ../ERP-Santander/transacoes.h \
 		ui_transacoes.h \
-		../ERP-Santander/dashboard.h
+		../ERP-Santander/contaspagarreceber.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o transacoes.o ../ERP-Santander/transacoes.cpp
 
 moc_apresentacao.o: moc_apresentacao.cpp 

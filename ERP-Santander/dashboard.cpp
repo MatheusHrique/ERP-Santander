@@ -54,10 +54,9 @@ void Dashboard::on_btnCheckConta_clicked()
                 nome = query.value("nome").toString();
                 password = query.value("password").toString();
 
-                QMessageBox::information(this, "Informações da Conta",
-                                         "Nome: " + nome + "\nCPF: " + CPF + "\nSenha: " + password);
+                QMessageBox::information(this, "Informações da Conta", "Nome: " + nome + "\nCPF: " + CPF + "\nSenha: " + password);
             } else {
-                qDebug() << "Nenhum cliente encontrado com o ID fornecido.";
+                qDebug() << "Erro ao executar a consulta:" << query.lastError().text();
                 QMessageBox::warning(this, "Aviso", "Nenhum cliente encontrado com o ID fornecido.");
             }
         } else {
