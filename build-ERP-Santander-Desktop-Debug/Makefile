@@ -54,38 +54,50 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../ERP-Santander/apresentacao.cpp \
 		../ERP-Santander/bcript.cpp \
+		../ERP-Santander/compararperiodos.cpp \
 		../ERP-Santander/contaspagarreceber.cpp \
 		../ERP-Santander/dashboard.cpp \
+		../ERP-Santander/entradassaidas.cpp \
 		../ERP-Santander/faturas.cpp \
 		../ERP-Santander/login.cpp \
 		../ERP-Santander/main.cpp \
 		../ERP-Santander/initialwindow.cpp \
 		../ERP-Santander/register.cpp \
+		../ERP-Santander/riscosfinanceiros.cpp \
 		../ERP-Santander/transacoes.cpp moc_apresentacao.cpp \
+		moc_compararperiodos.cpp \
 		moc_contaspagarreceber.cpp \
 		moc_dashboard.cpp \
+		moc_entradassaidas.cpp \
 		moc_faturas.cpp \
 		moc_initialwindow.cpp \
 		moc_login.cpp \
 		moc_register.cpp \
+		moc_riscosfinanceiros.cpp \
 		moc_transacoes.cpp
 OBJECTS       = apresentacao.o \
 		bcript.o \
+		compararperiodos.o \
 		contaspagarreceber.o \
 		dashboard.o \
+		entradassaidas.o \
 		faturas.o \
 		login.o \
 		main.o \
 		initialwindow.o \
 		register.o \
+		riscosfinanceiros.o \
 		transacoes.o \
 		moc_apresentacao.o \
+		moc_compararperiodos.o \
 		moc_contaspagarreceber.o \
 		moc_dashboard.o \
+		moc_entradassaidas.o \
 		moc_faturas.o \
 		moc_initialwindow.o \
 		moc_login.o \
 		moc_register.o \
+		moc_riscosfinanceiros.o \
 		moc_transacoes.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -166,21 +178,27 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../ERP-Santander/ERP-Santander.pro ../ERP-Santander/apresentacao.h \
 		../ERP-Santander/bcript.h \
+		../ERP-Santander/compararperiodos.h \
 		../ERP-Santander/contaspagarreceber.h \
 		../ERP-Santander/dashboard.h \
+		../ERP-Santander/entradassaidas.h \
 		../ERP-Santander/faturas.h \
 		../ERP-Santander/initialwindow.h \
 		../ERP-Santander/login.h \
 		../ERP-Santander/register.h \
+		../ERP-Santander/riscosfinanceiros.h \
 		../ERP-Santander/transacoes.h ../ERP-Santander/apresentacao.cpp \
 		../ERP-Santander/bcript.cpp \
+		../ERP-Santander/compararperiodos.cpp \
 		../ERP-Santander/contaspagarreceber.cpp \
 		../ERP-Santander/dashboard.cpp \
+		../ERP-Santander/entradassaidas.cpp \
 		../ERP-Santander/faturas.cpp \
 		../ERP-Santander/login.cpp \
 		../ERP-Santander/main.cpp \
 		../ERP-Santander/initialwindow.cpp \
 		../ERP-Santander/register.cpp \
+		../ERP-Santander/riscosfinanceiros.cpp \
 		../ERP-Santander/transacoes.cpp
 QMAKE_TARGET  = ERP-Santander
 DESTDIR       = 
@@ -190,7 +208,7 @@ TARGET        = ERP-Santander
 first: all
 ####### Build rules
 
-ERP-Santander: ui_apresentacao.h ui_contaspagarreceber.h ui_dashboard.h ui_faturas.h ui_initialwindow.h ui_login.h ui_register.h ui_transacoes.h $(OBJECTS)  
+ERP-Santander: ui_apresentacao.h ui_compararperiodos.h ui_contaspagarreceber.h ui_dashboard.h ui_entradassaidas.h ui_faturas.h ui_initialwindow.h ui_login.h ui_register.h ui_riscosfinanceiros.h ui_transacoes.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../ERP-Santander/ERP-Santander.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -365,9 +383,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../ERP-Santander/apresentacao.h ../ERP-Santander/bcript.h ../ERP-Santander/contaspagarreceber.h ../ERP-Santander/dashboard.h ../ERP-Santander/faturas.h ../ERP-Santander/initialwindow.h ../ERP-Santander/login.h ../ERP-Santander/register.h ../ERP-Santander/transacoes.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../ERP-Santander/apresentacao.cpp ../ERP-Santander/bcript.cpp ../ERP-Santander/contaspagarreceber.cpp ../ERP-Santander/dashboard.cpp ../ERP-Santander/faturas.cpp ../ERP-Santander/login.cpp ../ERP-Santander/main.cpp ../ERP-Santander/initialwindow.cpp ../ERP-Santander/register.cpp ../ERP-Santander/transacoes.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../ERP-Santander/apresentacao.ui ../ERP-Santander/contaspagarreceber.ui ../ERP-Santander/dashboard.ui ../ERP-Santander/faturas.ui ../ERP-Santander/initialwindow.ui ../ERP-Santander/login.ui ../ERP-Santander/register.ui ../ERP-Santander/transacoes.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../ERP-Santander/apresentacao.h ../ERP-Santander/bcript.h ../ERP-Santander/compararperiodos.h ../ERP-Santander/contaspagarreceber.h ../ERP-Santander/dashboard.h ../ERP-Santander/entradassaidas.h ../ERP-Santander/faturas.h ../ERP-Santander/initialwindow.h ../ERP-Santander/login.h ../ERP-Santander/register.h ../ERP-Santander/riscosfinanceiros.h ../ERP-Santander/transacoes.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../ERP-Santander/apresentacao.cpp ../ERP-Santander/bcript.cpp ../ERP-Santander/compararperiodos.cpp ../ERP-Santander/contaspagarreceber.cpp ../ERP-Santander/dashboard.cpp ../ERP-Santander/entradassaidas.cpp ../ERP-Santander/faturas.cpp ../ERP-Santander/login.cpp ../ERP-Santander/main.cpp ../ERP-Santander/initialwindow.cpp ../ERP-Santander/register.cpp ../ERP-Santander/riscosfinanceiros.cpp ../ERP-Santander/transacoes.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../ERP-Santander/apresentacao.ui ../ERP-Santander/compararperiodos.ui ../ERP-Santander/contaspagarreceber.ui ../ERP-Santander/dashboard.ui ../ERP-Santander/entradassaidas.ui ../ERP-Santander/faturas.ui ../ERP-Santander/initialwindow.ui ../ERP-Santander/login.ui ../ERP-Santander/register.ui ../ERP-Santander/riscosfinanceiros.ui ../ERP-Santander/transacoes.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -399,13 +417,18 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_apresentacao.cpp moc_contaspagarreceber.cpp moc_dashboard.cpp moc_faturas.cpp moc_initialwindow.cpp moc_login.cpp moc_register.cpp moc_transacoes.cpp
+compiler_moc_header_make_all: moc_apresentacao.cpp moc_compararperiodos.cpp moc_contaspagarreceber.cpp moc_dashboard.cpp moc_entradassaidas.cpp moc_faturas.cpp moc_initialwindow.cpp moc_login.cpp moc_register.cpp moc_riscosfinanceiros.cpp moc_transacoes.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_apresentacao.cpp moc_contaspagarreceber.cpp moc_dashboard.cpp moc_faturas.cpp moc_initialwindow.cpp moc_login.cpp moc_register.cpp moc_transacoes.cpp
+	-$(DEL_FILE) moc_apresentacao.cpp moc_compararperiodos.cpp moc_contaspagarreceber.cpp moc_dashboard.cpp moc_entradassaidas.cpp moc_faturas.cpp moc_initialwindow.cpp moc_login.cpp moc_register.cpp moc_riscosfinanceiros.cpp moc_transacoes.cpp
 moc_apresentacao.cpp: ../ERP-Santander/apresentacao.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/aluno/Documentos/matheus/build-ERP-Santander-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/aluno/Documentos/matheus/ERP-Santander -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../ERP-Santander/apresentacao.h -o moc_apresentacao.cpp
+
+moc_compararperiodos.cpp: ../ERP-Santander/compararperiodos.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/aluno/Documentos/matheus/build-ERP-Santander-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/aluno/Documentos/matheus/ERP-Santander -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../ERP-Santander/compararperiodos.h -o moc_compararperiodos.cpp
 
 moc_contaspagarreceber.cpp: ../ERP-Santander/contaspagarreceber.h \
 		moc_predefs.h \
@@ -416,6 +439,11 @@ moc_dashboard.cpp: ../ERP-Santander/dashboard.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/aluno/Documentos/matheus/build-ERP-Santander-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/aluno/Documentos/matheus/ERP-Santander -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../ERP-Santander/dashboard.h -o moc_dashboard.cpp
+
+moc_entradassaidas.cpp: ../ERP-Santander/entradassaidas.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/aluno/Documentos/matheus/build-ERP-Santander-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/aluno/Documentos/matheus/ERP-Santander -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../ERP-Santander/entradassaidas.h -o moc_entradassaidas.cpp
 
 moc_faturas.cpp: ../ERP-Santander/faturas.h \
 		moc_predefs.h \
@@ -437,6 +465,11 @@ moc_register.cpp: ../ERP-Santander/register.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/aluno/Documentos/matheus/build-ERP-Santander-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/aluno/Documentos/matheus/ERP-Santander -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../ERP-Santander/register.h -o moc_register.cpp
 
+moc_riscosfinanceiros.cpp: ../ERP-Santander/riscosfinanceiros.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/aluno/Documentos/matheus/build-ERP-Santander-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/aluno/Documentos/matheus/ERP-Santander -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../ERP-Santander/riscosfinanceiros.h -o moc_riscosfinanceiros.cpp
+
 moc_transacoes.cpp: ../ERP-Santander/transacoes.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -446,12 +479,16 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_apresentacao.h ui_contaspagarreceber.h ui_dashboard.h ui_faturas.h ui_initialwindow.h ui_login.h ui_register.h ui_transacoes.h
+compiler_uic_make_all: ui_apresentacao.h ui_compararperiodos.h ui_contaspagarreceber.h ui_dashboard.h ui_entradassaidas.h ui_faturas.h ui_initialwindow.h ui_login.h ui_register.h ui_riscosfinanceiros.h ui_transacoes.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_apresentacao.h ui_contaspagarreceber.h ui_dashboard.h ui_faturas.h ui_initialwindow.h ui_login.h ui_register.h ui_transacoes.h
+	-$(DEL_FILE) ui_apresentacao.h ui_compararperiodos.h ui_contaspagarreceber.h ui_dashboard.h ui_entradassaidas.h ui_faturas.h ui_initialwindow.h ui_login.h ui_register.h ui_riscosfinanceiros.h ui_transacoes.h
 ui_apresentacao.h: ../ERP-Santander/apresentacao.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic ../ERP-Santander/apresentacao.ui -o ui_apresentacao.h
+
+ui_compararperiodos.h: ../ERP-Santander/compararperiodos.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic ../ERP-Santander/compararperiodos.ui -o ui_compararperiodos.h
 
 ui_contaspagarreceber.h: ../ERP-Santander/contaspagarreceber.ui \
 		/usr/lib/qt5/bin/uic
@@ -460,6 +497,10 @@ ui_contaspagarreceber.h: ../ERP-Santander/contaspagarreceber.ui \
 ui_dashboard.h: ../ERP-Santander/dashboard.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic ../ERP-Santander/dashboard.ui -o ui_dashboard.h
+
+ui_entradassaidas.h: ../ERP-Santander/entradassaidas.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic ../ERP-Santander/entradassaidas.ui -o ui_entradassaidas.h
 
 ui_faturas.h: ../ERP-Santander/faturas.ui \
 		/usr/lib/qt5/bin/uic
@@ -476,6 +517,10 @@ ui_login.h: ../ERP-Santander/login.ui \
 ui_register.h: ../ERP-Santander/register.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic ../ERP-Santander/register.ui -o ui_register.h
+
+ui_riscosfinanceiros.h: ../ERP-Santander/riscosfinanceiros.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic ../ERP-Santander/riscosfinanceiros.ui -o ui_riscosfinanceiros.h
 
 ui_transacoes.h: ../ERP-Santander/transacoes.ui \
 		/usr/lib/qt5/bin/uic
@@ -500,6 +545,11 @@ apresentacao.o: ../ERP-Santander/apresentacao.cpp ../ERP-Santander/apresentacao.
 bcript.o: ../ERP-Santander/bcript.cpp ../ERP-Santander/bcript.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bcript.o ../ERP-Santander/bcript.cpp
 
+compararperiodos.o: ../ERP-Santander/compararperiodos.cpp ../ERP-Santander/compararperiodos.h \
+		ui_compararperiodos.h \
+		../ERP-Santander/entradassaidas.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o compararperiodos.o ../ERP-Santander/compararperiodos.cpp
+
 contaspagarreceber.o: ../ERP-Santander/contaspagarreceber.cpp ../ERP-Santander/contaspagarreceber.h \
 		ui_contaspagarreceber.h \
 		../ERP-Santander/dashboard.h \
@@ -512,6 +562,11 @@ dashboard.o: ../ERP-Santander/dashboard.cpp ../ERP-Santander/dashboard.h \
 		../ERP-Santander/apresentacao.h \
 		../ERP-Santander/contaspagarreceber.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dashboard.o ../ERP-Santander/dashboard.cpp
+
+entradassaidas.o: ../ERP-Santander/entradassaidas.cpp ../ERP-Santander/entradassaidas.h \
+		ui_entradassaidas.h \
+		../ERP-Santander/dashboard.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o entradassaidas.o ../ERP-Santander/entradassaidas.cpp
 
 faturas.o: ../ERP-Santander/faturas.cpp ../ERP-Santander/faturas.h \
 		ui_faturas.h \
@@ -540,6 +595,11 @@ register.o: ../ERP-Santander/register.cpp ../ERP-Santander/register.h \
 		../ERP-Santander/bcript.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o register.o ../ERP-Santander/register.cpp
 
+riscosfinanceiros.o: ../ERP-Santander/riscosfinanceiros.cpp ../ERP-Santander/riscosfinanceiros.h \
+		ui_riscosfinanceiros.h \
+		../ERP-Santander/dashboard.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o riscosfinanceiros.o ../ERP-Santander/riscosfinanceiros.cpp
+
 transacoes.o: ../ERP-Santander/transacoes.cpp ../ERP-Santander/transacoes.h \
 		ui_transacoes.h \
 		../ERP-Santander/contaspagarreceber.h
@@ -548,11 +608,17 @@ transacoes.o: ../ERP-Santander/transacoes.cpp ../ERP-Santander/transacoes.h \
 moc_apresentacao.o: moc_apresentacao.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_apresentacao.o moc_apresentacao.cpp
 
+moc_compararperiodos.o: moc_compararperiodos.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_compararperiodos.o moc_compararperiodos.cpp
+
 moc_contaspagarreceber.o: moc_contaspagarreceber.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_contaspagarreceber.o moc_contaspagarreceber.cpp
 
 moc_dashboard.o: moc_dashboard.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dashboard.o moc_dashboard.cpp
+
+moc_entradassaidas.o: moc_entradassaidas.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_entradassaidas.o moc_entradassaidas.cpp
 
 moc_faturas.o: moc_faturas.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_faturas.o moc_faturas.cpp
@@ -565,6 +631,9 @@ moc_login.o: moc_login.cpp
 
 moc_register.o: moc_register.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_register.o moc_register.cpp
+
+moc_riscosfinanceiros.o: moc_riscosfinanceiros.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_riscosfinanceiros.o moc_riscosfinanceiros.cpp
 
 moc_transacoes.o: moc_transacoes.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_transacoes.o moc_transacoes.cpp

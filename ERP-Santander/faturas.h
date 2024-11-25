@@ -20,6 +20,10 @@ private slots:
 
     void carregarFaturas();
 
+    void atualizarTabela(QString prepareValue);
+
+    void on_btnPesquisar_clicked();
+
 private:
     Ui::faturas *ui;
 };

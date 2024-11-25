@@ -22,6 +22,10 @@ private slots:
 
     void on_btnContasPagarReceber_clicked();
 
+    void on_btnFluxoDeCaixa_clicked();
+
+    void on_btnGestaoDeRiscos_clicked();
+
 private:
     Ui::Dashboard *ui;
 };

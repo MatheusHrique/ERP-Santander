@@ -78,6 +78,32 @@
     <string>Contas a Pagar e Receber</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="btnFluxoDeCaixa">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>140</y>
+     <width>251</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Acompanhamento de fluxo de caixa</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnGestaoDeRiscos">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>60</y>
+     <width>121</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Gestão de Riscos</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

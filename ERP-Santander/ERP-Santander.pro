@@ -19,34 +19,43 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     apresentacao.cpp \
     bcript.cpp \
+    compararperiodos.cpp \
     contaspagarreceber.cpp \
     dashboard.cpp \
+    entradassaidas.cpp \
     faturas.cpp \
     login.cpp \
     main.cpp \
     initialwindow.cpp \
     register.cpp \
+    riscosfinanceiros.cpp \
     transacoes.cpp
 
 HEADERS += \
     apresentacao.h \
     bcript.h \
+    compararperiodos.h \
     contaspagarreceber.h \
     dashboard.h \
+    entradassaidas.h \
     faturas.h \
     initialwindow.h \
     login.h \
     register.h \
+    riscosfinanceiros.h \
     transacoes.h
 
 FORMS += \
     apresentacao.ui \
+    compararperiodos.ui \
     contaspagarreceber.ui \
     dashboard.ui \
+    entradassaidas.ui \
     faturas.ui \
     initialwindow.ui \
     login.ui \
     register.ui \
+    riscosfinanceiros.ui \
     transacoes.ui
 
 # Default rules for deployment.

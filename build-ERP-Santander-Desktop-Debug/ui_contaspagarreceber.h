@@ -67,7 +67,7 @@ public:
 
     void retranslateUi(QWidget *contasPagarReceber)
     {
-        contasPagarReceber->setWindowTitle(QApplication::translate("contasPagarReceber", "Form", nullptr));
+        contasPagarReceber->setWindowTitle(QApplication::translate("contasPagarReceber", "Contas a Pagar e Receber", nullptr));
         label->setText(QApplication::translate("contasPagarReceber", "Id atual:", nullptr));
         lblID->setText(QString());
         btnFaturas->setText(QApplication::translate("contasPagarReceber", "Faturas", nullptr));

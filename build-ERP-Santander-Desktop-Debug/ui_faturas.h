@@ -37,6 +37,7 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QLabel *label_5;
     QComboBox *cbxInput;
+    QPushButton *btnPesquisar;
     QLineEdit *edtPesquisar;
     QTableWidget *tableWidget;
     QVBoxLayout *verticalLayout_4;
@@ -93,9 +94,19 @@ public:
         horizontalLayout_4->addWidget(label_5);
 
         cbxInput = new QComboBox(layoutWidget1);
+        cbxInput->addItem(QString());
+        cbxInput->addItem(QString());
+        cbxInput->addItem(QString());
+        cbxInput->addItem(QString());
+        cbxInput->addItem(QString());
         cbxInput->setObjectName(QString::fromUtf8("cbxInput"));
 
         horizontalLayout_4->addWidget(cbxInput);
+
+        btnPesquisar = new QPushButton(layoutWidget1);
+        btnPesquisar->setObjectName(QString::fromUtf8("btnPesquisar"));
+
+        horizontalLayout_4->addWidget(btnPesquisar);
 
         edtPesquisar = new QLineEdit(layoutWidget1);
         edtPesquisar->setObjectName(QString::fromUtf8("edtPesquisar"));
@@ -210,6 +221,13 @@ public:
         lblID->setText(QString());
         btnVoltar->setText(QApplication::translate("faturas", "Voltar", nullptr));
         label_5->setText(QApplication::translate("faturas", "Pesquisar por:", nullptr));
+        cbxInput->setItemText(0, QApplication::translate("faturas", "Nenhuma descri\303\247\303\243o", nullptr));
+        cbxInput->setItemText(1, QApplication::translate("faturas", "Fornecedor", nullptr));
+        cbxInput->setItemText(2, QApplication::translate("faturas", "Valor", nullptr));
+        cbxInput->setItemText(3, QApplication::translate("faturas", "Data de vencimento", nullptr));
+        cbxInput->setItemText(4, QApplication::translate("faturas", "Status de pagamento", nullptr));
+
+        btnPesquisar->setText(QApplication::translate("faturas", "Pesquisar", nullptr));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("faturas", "Id", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);

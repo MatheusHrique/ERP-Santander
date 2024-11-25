@@ -8,6 +8,8 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include "contaspagarreceber.h"
+#include "entradassaidas.h"
+#include "riscosfinanceiros.h"
 
 Dashboard::Dashboard(QString id, QWidget *parent) :
     QWidget(parent),
@@ -73,5 +75,19 @@ void Dashboard::on_btnContasPagarReceber_clicked()
 {
     contasPagarReceber *c = new contasPagarReceber(ui->lblID->text());
     c->show();
+    this->close();
+}
+
+void Dashboard::on_btnFluxoDeCaixa_clicked()
+{
+    entradasSaidas *e = new entradasSaidas(ui->lblID->text());
+    e->show();
+    this->close();
+}
+
+void Dashboard::on_btnGestaoDeRiscos_clicked()
+{
+    riscosFinanceiros *e = new riscosFinanceiros(ui->lblID->text());
+    e->show();
     this->close();
 }

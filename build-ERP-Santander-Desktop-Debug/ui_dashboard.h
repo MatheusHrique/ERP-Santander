@@ -30,6 +30,8 @@ public:
     QPushButton *btnCheckConta;
     QPushButton *btnLogout;
     QPushButton *btnContasPagarReceber;
+    QPushButton *btnFluxoDeCaixa;
+    QPushButton *btnGestaoDeRiscos;
 
     void setupUi(QWidget *Dashboard)
     {
@@ -71,6 +73,12 @@ public:
         btnContasPagarReceber = new QPushButton(Dashboard);
         btnContasPagarReceber->setObjectName(QString::fromUtf8("btnContasPagarReceber"));
         btnContasPagarReceber->setGeometry(QRect(140, 100, 191, 25));
+        btnFluxoDeCaixa = new QPushButton(Dashboard);
+        btnFluxoDeCaixa->setObjectName(QString::fromUtf8("btnFluxoDeCaixa"));
+        btnFluxoDeCaixa->setGeometry(QRect(110, 140, 251, 25));
+        btnGestaoDeRiscos = new QPushButton(Dashboard);
+        btnGestaoDeRiscos->setObjectName(QString::fromUtf8("btnGestaoDeRiscos"));
+        btnGestaoDeRiscos->setGeometry(QRect(170, 60, 121, 25));
 
         retranslateUi(Dashboard);
 
@@ -85,6 +93,8 @@ public:
         btnCheckConta->setText(QApplication::translate("Dashboard", "CheckConta", nullptr));
         btnLogout->setText(QApplication::translate("Dashboard", "Logout", nullptr));
         btnContasPagarReceber->setText(QApplication::translate("Dashboard", "Contas a Pagar e Receber", nullptr));
+        btnFluxoDeCaixa->setText(QApplication::translate("Dashboard", "Acompanhamento de fluxo de caixa", nullptr));
+        btnGestaoDeRiscos->setText(QApplication::translate("Dashboard", "Gest\303\243o de Riscos", nullptr));
     } // retranslateUi
 
 };
