@@ -40,7 +40,6 @@ public:
     QPushButton *btnPesquisar;
     QLineEdit *edtPesquisar;
     QTableWidget *tableWidget;
-    QVBoxLayout *verticalLayout_4;
     QHBoxLayout *horizontalLayout_2;
     QVBoxLayout *verticalLayout_3;
     QLabel *label_2;
@@ -51,9 +50,19 @@ public:
     QVBoxLayout *verticalLayout;
     QLabel *label_4;
     QLineEdit *edtValor;
+    QHBoxLayout *horizontalLayout_5;
+    QVBoxLayout *verticalLayout_7;
+    QVBoxLayout *verticalLayout_8;
+    QLabel *label_8;
+    QLineEdit *edtId;
+    QVBoxLayout *verticalLayout_6;
+    QLabel *label_7;
+    QComboBox *cbxStatus;
+    QVBoxLayout *verticalLayout_4;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *btnLimparTudo;
-    QPushButton *btnInserir;
+    QPushButton *btnPagar;
+    QPushButton *btnSalvar;
     QPushButton *btnEditar;
 
     void setupUi(QWidget *faturas)
@@ -82,7 +91,7 @@ public:
         btnVoltar->setGeometry(QRect(490, 20, 89, 25));
         layoutWidget1 = new QWidget(faturas);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(30, 110, 541, 361));
+        layoutWidget1->setGeometry(QRect(30, 70, 541, 431));
         verticalLayout_5 = new QVBoxLayout(layoutWidget1);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         verticalLayout_5->setContentsMargins(0, 0, 0, 0);
@@ -133,19 +142,19 @@ public:
 
         verticalLayout_5->addWidget(tableWidget);
 
-        verticalLayout_4 = new QVBoxLayout();
-        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         label_2 = new QLabel(layoutWidget1);
         label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setEnabled(true);
 
         verticalLayout_3->addWidget(label_2);
 
         dateEdit = new QDateEdit(layoutWidget1);
         dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
+        dateEdit->setEnabled(false);
 
         verticalLayout_3->addWidget(dateEdit);
 
@@ -156,11 +165,13 @@ public:
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         label_3 = new QLabel(layoutWidget1);
         label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setEnabled(true);
 
         verticalLayout_2->addWidget(label_3);
 
         edtFornecedor = new QLineEdit(layoutWidget1);
         edtFornecedor->setObjectName(QString::fromUtf8("edtFornecedor"));
+        edtFornecedor->setEnabled(false);
 
         verticalLayout_2->addWidget(edtFornecedor);
 
@@ -171,11 +182,13 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         label_4 = new QLabel(layoutWidget1);
         label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setEnabled(true);
 
         verticalLayout->addWidget(label_4);
 
         edtValor = new QLineEdit(layoutWidget1);
         edtValor->setObjectName(QString::fromUtf8("edtValor"));
+        edtValor->setEnabled(false);
 
         verticalLayout->addWidget(edtValor);
 
@@ -183,8 +196,56 @@ public:
         horizontalLayout_2->addLayout(verticalLayout);
 
 
-        verticalLayout_4->addLayout(horizontalLayout_2);
+        verticalLayout_5->addLayout(horizontalLayout_2);
 
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        verticalLayout_7 = new QVBoxLayout();
+        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
+
+        horizontalLayout_5->addLayout(verticalLayout_7);
+
+        verticalLayout_8 = new QVBoxLayout();
+        verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
+        label_8 = new QLabel(layoutWidget1);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
+        label_8->setEnabled(true);
+
+        verticalLayout_8->addWidget(label_8);
+
+        edtId = new QLineEdit(layoutWidget1);
+        edtId->setObjectName(QString::fromUtf8("edtId"));
+        edtId->setEnabled(false);
+
+        verticalLayout_8->addWidget(edtId);
+
+
+        horizontalLayout_5->addLayout(verticalLayout_8);
+
+        verticalLayout_6 = new QVBoxLayout();
+        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
+        label_7 = new QLabel(layoutWidget1);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
+        label_7->setEnabled(true);
+
+        verticalLayout_6->addWidget(label_7);
+
+        cbxStatus = new QComboBox(layoutWidget1);
+        cbxStatus->addItem(QString());
+        cbxStatus->addItem(QString());
+        cbxStatus->setObjectName(QString::fromUtf8("cbxStatus"));
+        cbxStatus->setEnabled(false);
+
+        verticalLayout_6->addWidget(cbxStatus);
+
+
+        horizontalLayout_5->addLayout(verticalLayout_6);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_5);
+
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         btnLimparTudo = new QPushButton(layoutWidget1);
@@ -192,10 +253,15 @@ public:
 
         horizontalLayout_3->addWidget(btnLimparTudo);
 
-        btnInserir = new QPushButton(layoutWidget1);
-        btnInserir->setObjectName(QString::fromUtf8("btnInserir"));
+        btnPagar = new QPushButton(layoutWidget1);
+        btnPagar->setObjectName(QString::fromUtf8("btnPagar"));
 
-        horizontalLayout_3->addWidget(btnInserir);
+        horizontalLayout_3->addWidget(btnPagar);
+
+        btnSalvar = new QPushButton(layoutWidget1);
+        btnSalvar->setObjectName(QString::fromUtf8("btnSalvar"));
+
+        horizontalLayout_3->addWidget(btnSalvar);
 
         btnEditar = new QPushButton(layoutWidget1);
         btnEditar->setObjectName(QString::fromUtf8("btnEditar"));
@@ -238,11 +304,17 @@ public:
         ___qtablewidgetitem3->setText(QApplication::translate("faturas", "Data de vencimento", nullptr));
         QTableWidgetItem *___qtablewidgetitem4 = tableWidget->horizontalHeaderItem(4);
         ___qtablewidgetitem4->setText(QApplication::translate("faturas", "Status de pagamento", nullptr));
-        label_2->setText(QApplication::translate("faturas", "Data:", nullptr));
+        label_2->setText(QApplication::translate("faturas", "Data de vencimento:", nullptr));
         label_3->setText(QApplication::translate("faturas", "Fornecedor:", nullptr));
         label_4->setText(QApplication::translate("faturas", "Valor:", nullptr));
+        label_8->setText(QApplication::translate("faturas", "Id", nullptr));
+        label_7->setText(QApplication::translate("faturas", "Status de pagamento:", nullptr));
+        cbxStatus->setItemText(0, QApplication::translate("faturas", "Em pendente", nullptr));
+        cbxStatus->setItemText(1, QApplication::translate("faturas", "Pagado", nullptr));
+
         btnLimparTudo->setText(QApplication::translate("faturas", "Limpar tudo", nullptr));
-        btnInserir->setText(QApplication::translate("faturas", "Inserir", nullptr));
+        btnPagar->setText(QApplication::translate("faturas", "Pagar", nullptr));
+        btnSalvar->setText(QApplication::translate("faturas", "Salvar", nullptr));
         btnEditar->setText(QApplication::translate("faturas", "Editar", nullptr));
     } // retranslateUi
 

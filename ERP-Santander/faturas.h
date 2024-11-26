@@ -18,11 +18,15 @@ public:
 private slots:
     void on_btnVoltar_clicked();
 
-    void carregarFaturas();
-
     void atualizarTabela(QString prepareValue);
 
     void on_btnPesquisar_clicked();
+
+    void on_tableWidget_cellClicked(int row, int column);
+
+    void on_btnPagar_clicked();
+
+    void on_btnEditar_clicked();
 
 private:
     Ui::faturas *ui;
