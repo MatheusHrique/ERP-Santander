@@ -279,16 +279,16 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnPagar">
+         <widget class="QPushButton" name="btnAdicionar">
           <property name="text">
-           <string>Pagar</string>
+           <string>Adicionar</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnSalvar">
+         <widget class="QPushButton" name="btnPagar">
           <property name="text">
-           <string>Salvar</string>
+           <string>Pagar</string>
           </property>
          </widget>
         </item>

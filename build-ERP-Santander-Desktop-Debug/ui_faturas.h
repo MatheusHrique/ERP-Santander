@@ -61,8 +61,8 @@ public:
     QVBoxLayout *verticalLayout_4;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *btnLimparTudo;
+    QPushButton *btnAdicionar;
     QPushButton *btnPagar;
-    QPushButton *btnSalvar;
     QPushButton *btnEditar;
 
     void setupUi(QWidget *faturas)
@@ -253,15 +253,15 @@ public:
 
         horizontalLayout_3->addWidget(btnLimparTudo);
 
+        btnAdicionar = new QPushButton(layoutWidget1);
+        btnAdicionar->setObjectName(QString::fromUtf8("btnAdicionar"));
+
+        horizontalLayout_3->addWidget(btnAdicionar);
+
         btnPagar = new QPushButton(layoutWidget1);
         btnPagar->setObjectName(QString::fromUtf8("btnPagar"));
 
         horizontalLayout_3->addWidget(btnPagar);
-
-        btnSalvar = new QPushButton(layoutWidget1);
-        btnSalvar->setObjectName(QString::fromUtf8("btnSalvar"));
-
-        horizontalLayout_3->addWidget(btnSalvar);
 
         btnEditar = new QPushButton(layoutWidget1);
         btnEditar->setObjectName(QString::fromUtf8("btnEditar"));
@@ -313,8 +313,8 @@ public:
         cbxStatus->setItemText(1, QApplication::translate("faturas", "Pagado", nullptr));
 
         btnLimparTudo->setText(QApplication::translate("faturas", "Limpar tudo", nullptr));
+        btnAdicionar->setText(QApplication::translate("faturas", "Adicionar", nullptr));
         btnPagar->setText(QApplication::translate("faturas", "Pagar", nullptr));
-        btnSalvar->setText(QApplication::translate("faturas", "Salvar", nullptr));
         btnEditar->setText(QApplication::translate("faturas", "Editar", nullptr));
     } // retranslateUi
 

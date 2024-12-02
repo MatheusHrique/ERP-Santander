@@ -149,7 +149,7 @@ void faturas::on_tableWidget_cellClicked(int row, int column)
         ui->edtId->setText(ui->tableWidget->item(row, 0)->text());
         ui->edtFornecedor->setText(ui->tableWidget->item(row, 1)->text());
         ui->edtValor->setText(ui->tableWidget->item(row, 2)->text());
-        ui->dateEdit->setDate((ui->tableWidget->item(row, 3)->text()).toDate??); // Pode dar erro aqui
+        ui->dateEdit->setDate(QDate::fromString(ui->tableWidget->item(row, 3)->text(),"yyyy-MM-dd")); // Pode dar erro aqui
         if(ui->tableWidget->item(row, 4)->text()=="Em pendente") ui->cbxStatus->setCurrentIndex(0);
         else ui->cbxStatus->setCurrentIndex(1);
     }
@@ -160,16 +160,17 @@ void faturas::on_btnPagar_clicked()
     int row = ui->tableWidget->currentRow();
     QMessageBox::information(this, "Informações da fatura selecionada.", "Fornecedor: "+ui->tableWidget->item(row, 1)->text()+". \nValor: "+ui->tableWidget->item(row, 2)->text()+". \nData de vencimento: "+ui->tableWidget->item(row, 3)->text()+". \nStatus de pagamento: "+ui->tableWidget->item(row, 4)->text()+".");
     QMessageBox::StandardButton resposta;
-    resposta = QMessageBox::question(this, "Confirmação", "Você quer pagar está fatura?");
+    resposta = QMessageBox::question(this, "Confirmação", "Você quer pagar essa fatura?");
     if(resposta==QMessageBox::Yes){
         QSqlQuery query;
-        query.prepare("DELETE FROM Faturas WHERE id="+ui->tableWidget->item(row, 0));
+        query.prepare("DELETE FROM Faturas WHERE id="+ui->tableWidget->item(row, 0)->text());
         if(query.exec()){
+            atualizarTabela("SELECT * FROM Faturas WHERE id_cliente="+ui->lblID->text());
             QMessageBox::information(this, "Aviso", "Fatura pagado!");
             ui->edtFornecedor->clear();
             ui->edtId->clear();
             ui->edtValor->clear();
-            ui->dateEdit->setDate("0000-00-00");
+            ui->dateEdit->setDate(QDate::currentDate());
             ui->cbxStatus->setCurrentIndex(0);
         } else QMessageBox::warning(this, "Erro!", "Erro ao realizar fatura!");
     }
@@ -178,12 +179,62 @@ void faturas::on_btnPagar_clicked()
 
 void faturas::on_btnEditar_clicked()
 {
-    bool e;
-    if(ui->edtFornecedor->isEnabled()) e=true;
-    else e=false;
-    ui->edtFornecedor->setEnabled(e);
-    ui->edtId->setEnabled(e);
-    ui->edtValor->setEnabled(e);
-    ui->dateEdit->setEnabled(e);
-    ui->cbxStatus->setEnabled(e);
+    if(!ui->tableWidget->isItemSelected(ui->tableWidget->itemAt(ui->tableWidget->currentRow(), ui->tableWidget->currentColumn()))){
+        QMessageBox::information(this, "Aviso", "Você precisa selecionar uma coluna para editar");
+        return;
+    }
+    bool e = ui->edtFornecedor->isEnabled();
+    if(e) e=false;
+    else {
+        e=true;
+        ui->edtFornecedor->setEnabled(e);
+        ui->edtId->setEnabled(e);
+        ui->edtValor->setEnabled(e);
+        ui->dateEdit->setEnabled(e);
+        ui->cbxStatus->setEnabled(e);
+    }
+    if(e) on_tableWidget_cellClicked(ui->tableWidget->currentRow(), ui->tableWidget->currentColumn());
+    else {
+        int row = ui->tableWidget->currentRow();
+        QString fornecedor = ui->edtFornecedor->text();
+        QString id = ui->edtId->text();
+        QString valor = ui->edtValor->text();
+        QDate data = ui->dateEdit->date(); // QDate::fromString(ui->dateEdit->text(),"yyyy-MM-dd");
+        QString dataString = data.toString("dd/MM/yyyy");
+        QString status = ui->cbxStatus->currentText();
+
+        QMessageBox::information(this, "Informações da fatura selecionada.", "Fornecedor: "+fornecedor+". \nValor: "+valor+". \nData de vencimento: "+dataString+". \nStatus de pagamento: "+status+".");
+        QMessageBox::StandardButton resposta;
+        resposta = QMessageBox::question(this, "Confirmação", "Você quer salvar essa modificação?");
+        if(resposta==QMessageBox::Yes){
+            QSqlQuery query;
+            query.prepare("UPDATE Faturas SET fornecedor=:fornecedor, data_vencimento=:data, status_pagamento=:status, valor=:valor WHERE id=:id");
+            query.bindValue(":fornecedor", fornecedor);
+            query.bindValue(":data", dataString);
+            query.bindValue(":status", status);
+            query.bindValue(":valor", valor);
+            query.bindValue(":id", id);
+            if(query.exec()){
+                atualizarTabela("SELECT * FROM Faturas WHERE id_cliente="+id);
+                QMessageBox::information(this, "Aviso", "Alterações aplicadas!");
+                ui->edtFornecedor->clear();
+                ui->edtId->clear();
+                ui->edtValor->clear();
+                ui->dateEdit->setDate(QDate::currentDate());
+                ui->cbxStatus->setCurrentIndex(0);
+                ui->tableWidget->setCurrentItem(ui->tableWidget->itemAt(-1, -1));
+
+                ui->edtFornecedor->setEnabled(e);
+                ui->edtId->setEnabled(e);
+                ui->edtValor->setEnabled(e);
+                ui->dateEdit->setEnabled(e);
+                ui->cbxStatus->setEnabled(e);
+            } else QMessageBox::warning(this, "Erro!", "Erro ao realizar alteração!");
+        }
+    }
+}
+
+void faturas::on_btnAdicionar_clicked()
+{
+
 }
