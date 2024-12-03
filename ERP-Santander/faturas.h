@@ -30,6 +30,8 @@ private slots:
 
     void on_btnAdicionar_clicked();
 
+    void on_btnCancelar_clicked();
+
 private:
     Ui::faturas *ui;
 };

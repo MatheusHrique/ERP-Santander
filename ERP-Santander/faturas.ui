@@ -305,6 +305,22 @@
     </item>
    </layout>
   </widget>
+  <widget class="QPushButton" name="btnCancelar">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>510</y>
+     <width>191</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cancelar  </string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

@@ -64,6 +64,7 @@ public:
     QPushButton *btnAdicionar;
     QPushButton *btnPagar;
     QPushButton *btnEditar;
+    QPushButton *btnCancelar;
 
     void setupUi(QWidget *faturas)
     {
@@ -274,6 +275,10 @@ public:
 
         verticalLayout_5->addLayout(verticalLayout_4);
 
+        btnCancelar = new QPushButton(faturas);
+        btnCancelar->setObjectName(QString::fromUtf8("btnCancelar"));
+        btnCancelar->setEnabled(false);
+        btnCancelar->setGeometry(QRect(210, 510, 191, 25));
 
         retranslateUi(faturas);
 
@@ -316,6 +321,7 @@ public:
         btnAdicionar->setText(QApplication::translate("faturas", "Adicionar", nullptr));
         btnPagar->setText(QApplication::translate("faturas", "Pagar", nullptr));
         btnEditar->setText(QApplication::translate("faturas", "Editar", nullptr));
+        btnCancelar->setText(QApplication::translate("faturas", "Cancelar  ", nullptr));
     } // retranslateUi
 
 };
